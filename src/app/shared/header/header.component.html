@@ -1,5 +1,25 @@
-<div style="text-align: center">
-  <h1>Welcome to Hiteshi ....</h1>
+<div>
+  <div class="header">
+    <img class="image" [src]="Logo" alt="" />
+    <ng-content></ng-content>
+    <button
+      matmini--fab
+      color="primary"
+      aria-label="Example icon button with a menu icon"
+      class="menu"
+      (click)="handleClick()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <nav [class]="{ 'nav-open': isOpen, 'nav-closed': !isOpen }">
+      <a routerLink="">Home</a>
+      <a routerLink="/about">About Us</a>
+      <a routerLink="/contact">Contect Us</a>
+      <button mat-raised-button routerLink="/login">Login</button>
+      <!-- <button>Login</button> -->
+    </nav>
+  </div>
+  <!-- <h1>Welcome to Hiteshi ....</h1> -->
   <!-- @defer{
     <app-home></app-home>
   }
@@ -8,8 +28,6 @@
   }-->
 
   <div>
-    <ng-content></ng-content>
-
     <!-- <a [routerLink]="[{outlets:{outlets2:['newoutlet']}}]">Contect Us 2</a>| -->
   </div>
   <!-- <div style="background-color: red;">

@@ -1,37 +1,52 @@
 <!-- login.component.html -->
+
+<app-header> </app-header>
+
 <div class="login-container">
   <mat-card>
-    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-      <mat-form-field>
-        <mat-label>Enter your email</mat-label>
-        <input
-          type="email"
-          matInput
-          placeholder="pat@example.com"
-          formControlName="email"
-        />
-        @if (loginForm.get('email')?.hasError('required') ) {
-        <mat-error>Email Required </mat-error>
-        } @if (loginForm.get('email')?.hasError('email') &&
-        !loginForm.get('email')?.hasError('required') ) {
-        <mat-error> Please enter a valid email address. </mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input
-          type="password"
-          matInput
-          placeholder="*****"
-          formControlName="password"
-        />
-        @if (loginForm.get('password')?.hasError('required') ) {
-        <mat-error>Password Required </mat-error>
-        }
-      </mat-form-field>
-      <div class="submit-btn">
-        <button mat-stroked-button color="primary" type="submit">Submit</button>
-      </div>
-    </form>
+    <div class="loginPage">
+      <img src="../../../assets/hiteshi_logo.webp" />
+      <h1>Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+          />
+          @if (loginForm.get('email')?.hasError('required') ) {
+          <mat-error>Email Required </mat-error>
+          } @else if (loginForm.get('email')?.hasError('email') &&
+          !loginForm.get('email')?.hasError('required') ) {
+          <mat-error> Please enter a valid email address. </mat-error>
+          } @else if (loginForm.get('email')?.hasError('pattern') &&
+          !loginForm.get('email')?.hasError('required') ) {
+          <mat-error> Invalid email pattern. </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="*****"
+            formControlName="password"
+          />
+          @if (loginForm.get('password')?.hasError('required') ) {
+          <mat-error>Password Required </mat-error>
+          } @else if(loginForm.get('password')?.hasError('minlength') &&
+          !loginForm.get('password')?.hasError('required')){
+          <mat-error>Password must be at least 6 characters long.</mat-error>
+          }
+        </mat-form-field>
+        <div class="submit-btn">
+          <button mat-stroked-button color="primary" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   </mat-card>
 </div>
