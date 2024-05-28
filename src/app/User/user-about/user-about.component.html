@@ -1,1 +1,22 @@
-<p>user-about works!</p>
+<h1>{{ "user-about works!" | titlecase }}</h1>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Student Name</th>
+    <th>Gender</th>
+  </tr>
+  @for(stu of students;track stu.id){
+  <tr>
+    <td>{{ stu.id }}</td>
+    <td>{{ stu.name | uppercase }}</td>
+    <td>{{ stu.gender }}</td>
+  </tr>
+  }
+</table>
+
+<h3>{{ 12.8966423 | number }}</h3>
+<h3>{{ currentDate | date }}</h3>
+<h3>{{ currentDate | date : "shortDate" }}</h3>
+<h3>{{ currentDate | date : "longDate" }}</h3>
+<h3>{{ currentDate | date : "fullDate" }}</h3>
